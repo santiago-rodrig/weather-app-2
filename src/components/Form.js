@@ -6,6 +6,7 @@ const Form = () => {
     country: ''
   })
 
+  const [error, setError] = useState(false)
   const { city, country } = query
 
   const handleChange = e => {
@@ -15,8 +16,21 @@ const Form = () => {
     })
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    if (city.trim() === '' || country.trim() === '') {
+      setError(true)
+
+      return
+    }
+
+    setError(false)
+  }
+
   return (
-    <form className="row">
+    <form className="row" onSubmit={handleSubmit}>
+      { error ? <p className="red darken-4 error">Todos los campos son obligatorios</p> : null }
       <div className="input-field col s12">
         <input type="text" name="city" id="city" value={city} onChange={handleChange} />
         <label htmlFor="city">Ciudad: </label>
@@ -33,6 +47,11 @@ const Form = () => {
           <option value="PE">Perú</option>
         </select>
         <label htmlFor="country">País: </label>
+      </div>
+      <div className="input-field col s12">
+        <button className="waves-effect waves-light btn-large btn-block yellow accent-4">
+          Predecir el Clima
+        </button>
       </div>
     </form>
   )
