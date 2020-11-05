@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 
-const Form = () => {
-  const [query, setQuery] = useState({
-    city: '',
-    country: ''
-  })
-
+const Form = ({ query, setQuery, setSendQuery }) => {
   const [error, setError] = useState(false)
   const { city, country } = query
 
@@ -26,6 +21,7 @@ const Form = () => {
     }
 
     setError(false)
+    setSendQuery(true)
   }
 
   return (

@@ -1,8 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header'
 import Formulario from './components/Form'
 
 function App() {
+  const [query, setQuery] = useState({
+    city: '',
+    country: ''
+  })
+
+  const [sendQuery, setSendQuery] = useState(false)
+
+  const { city, country } = query
+
+  // TODO
+  // const queryAPI = async () => {
+  // }
+
+  // useEffect(() => {
+  // }, [sendQuery])
+
   return (
     <>
       <Header>Aplicación del Clima</Header>
@@ -10,7 +26,7 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col m6 s12">
-              <Formulario />
+              <Formulario query={query} setQuery={setQuery} setSendQuery={setSendQuery} />
             </div>
             <div className="col m6 s12">
               2
