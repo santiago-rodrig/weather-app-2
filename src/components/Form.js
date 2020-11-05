@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+  const [query, setQuery] = useState({
+    city: '',
+    country: ''
+  })
+
+  const { city, country } = query
+
+  const handleChange = e => {
+    setQuery({
+      ...query,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <form className="row">
       <div className="input-field col s12">
-        <input type="text" name="city" id="city" />
+        <input type="text" name="city" id="city" value={city} onChange={handleChange} />
         <label htmlFor="city">Ciudad: </label>
       </div>
       <div className="input-field col s12">
-        <select name="country" id="country" defaultValue="">
+        <select name="country" id="country" value={country} onChange={handleChange}>
           <option value="" disabled>-- Seleccione un país --</option>
           <option value="US">Estados Unidos</option>
           <option value="MX">México</option>
