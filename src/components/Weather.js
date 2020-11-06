@@ -1,6 +1,8 @@
 import React from 'react'
 
 export const Weather = ({ result }) => {
+  if (result === null) return null
+
   const { name, main } = result
 
   if (!name) return null

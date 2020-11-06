@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Error from './Error'
 
 const Form = ({ query, setQuery, setSendQuery }) => {
   const [error, setError] = useState(false)
@@ -26,7 +27,7 @@ const Form = ({ query, setQuery, setSendQuery }) => {
 
   return (
     <form className="row" onSubmit={handleSubmit}>
-      { error ? <p className="red darken-4 error">Todos los campos son obligatorios</p> : null }
+      { error ? <Error>Todos los campos son obligatorios</Error> : null }
       <div className="input-field col s12">
         <input type="text" name="city" id="city" value={city} onChange={handleChange} />
         <label htmlFor="city">Ciudad: </label>
