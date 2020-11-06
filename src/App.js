@@ -26,7 +26,7 @@ function App() {
       fetch(endPoint)
         .then(response => {
           if (response.status !== 200) {
-            throw new Error
+            throw new Error()
           } else {
             return response.json()
           }
