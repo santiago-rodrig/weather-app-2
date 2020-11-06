@@ -5,7 +5,7 @@ import Weather from './components/Weather'
 import Error from './components/Error'
 
 const appID = 'f6fc9d8b58c6220bd6d37cbf62a5a564'
-const APIEndPointPrefix = 'http://api.openweathermap.org/data/2.5/weather'
+const APIEndPointPrefix = 'https://api.openweathermap.org/data/2.5/weather'
 
 function App() {
   const [query, setQuery] = useState({
