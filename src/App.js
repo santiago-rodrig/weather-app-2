@@ -2,6 +2,9 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header'
 import Formulario from './components/Form'
 
+const appID = 'f6fc9d8b58c6220bd6d37cbf62a5a564'
+const APIEndPointPrefix= 'http://api.openweathermap.org/data/2.5/weather'
+
 function App() {
   const [query, setQuery] = useState({
     city: '',
@@ -12,12 +15,19 @@ function App() {
 
   const { city, country } = query
 
-  // TODO
-  // const queryAPI = async () => {
-  // }
+  useEffect(() => {
+    if (sendQuery) {
+      const endPoint = `${APIEndPointPrefix}?q=${city},${country}&appid=${appID}`
 
-  // useEffect(() => {
-  // }, [sendQuery])
+      fetch(endPoint)
+        .then(response => response.json())
+        .then(payload => {
+          console.log(payload)
+          setSendQuery(false)
+        })
+        .catch(error => console.log(error.message))
+    }
+  }, [sendQuery, city, country])
 
   return (
     <>
